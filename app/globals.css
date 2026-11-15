@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+:root {
+  --canvas: #090909;
+  --surface-1: #141414;
+  --surface-2: #1c1c1c;
+  --hairline: #262626;
+  --hairline-soft: #1a1a1a;
+  --ink: #ffffff;
+  --ink-muted: #999999;
+  --accent-blue: #0099ff;
+  --gradient-magenta: #d44df0;
+  --gradient-violet: #6a4cf5;
+  --gradient-orange: #ff7a3d;
+  --gradient-coral: #ff5577;
+  --semantic-success: #22c55e;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-hairline: var(--hairline);
+  --color-hairline-soft: var(--hairline-soft);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-accent: var(--accent-blue);
+  --color-success: var(--semantic-success);
+  --color-gradient-magenta: var(--gradient-magenta);
+  --color-gradient-violet: var(--gradient-violet);
+  --color-gradient-orange: var(--gradient-orange);
+  --color-gradient-coral: var(--gradient-coral);
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-inter), system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--canvas);
+  color: var(--ink);
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "cv01", "cv05", "cv09", "cv11", "ss03", "ss07";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--canvas); }
+::-webkit-scrollbar-thumb { background: var(--hairline); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--surface-2); }
+
+/* React Flow overrides */
+.react-flow__background { background: var(--canvas) !important; }
+.react-flow__minimap { background: var(--surface-1) !important; border: 1px solid var(--hairline) !important; border-radius: 10px !important; }
+.react-flow__minimap-mask { fill: rgba(9,9,9,0.6) !important; }
+.react-flow__controls { background: var(--surface-1) !important; border: 1px solid var(--hairline) !important; border-radius: 10px !important; overflow: hidden; }
+.react-flow__controls-button { background: var(--surface-1) !important; border-bottom: 1px solid var(--hairline) !important; color: var(--ink) !important; fill: var(--ink) !important; }
+.react-flow__controls-button:hover { background: var(--surface-2) !important; }
+.react-flow__edge-path { stroke: var(--hairline) !important; }
+.react-flow__edge.selected .react-flow__edge-path { stroke: var(--accent-blue) !important; }
+.react-flow__handle { background: var(--surface-2) !important; border: 1px solid var(--hairline) !important; width: 8px !important; height: 8px !important; }
+.react-flow__handle:hover { background: var(--accent-blue) !important; border-color: var(--accent-blue) !important; }
+.react-flow__connection-line { stroke: var(--accent-blue) !important; }
+.react-flow__selection { background: rgba(0,153,255,0.05) !important; border: 1px solid var(--accent-blue) !important; }
+
+/* Focus ring */
+:focus-visible { outline: 1px solid var(--accent-blue); outline-offset: 2px; }
+
+/* Animations */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse-soft { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+.animate-fade-in { animation: fadeIn 0.3s ease forwards; }
+.animate-pulse-soft { animation: pulse-soft 2s ease-in-out infinite; }
